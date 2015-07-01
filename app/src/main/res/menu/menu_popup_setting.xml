@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nicName"
+        android:title="닉네임"
+        android:icon="@android:drawable/ic_menu_save"
+        app:showAsAction="always|withText"/>
+
+    <item
+        android:id="@+id/myPage"
+        android:title="My Page"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="always|withText"/>
+
+    <item
+        android:id="@+id/inter"
+        android:title="관심 글"
+        android:icon="@android:drawable/ic_menu_edit"
+        app:showAsAction="always|withText"/>
+
+    <item
+        android:id="@+id/neighbor"
+        android:title="이웃보기"
+        android:icon="@android:drawable/ic_menu_edit"
+        app:showAsAction="always|withText"/>
+
+    <item
+        android:id="@+id/trevalDate"
+        android:title="여행 일정"
+        android:icon="@android:drawable/ic_menu_edit"
+        app:showAsAction="always|withText"/>
+
+    <item
+        android:id="@+id/noticeSetting"
+        android:title="알림설정"
+        android:icon="@android:drawable/ic_menu_edit"
+        app:showAsAction="always|withText"/>
+
+    <item
+        android:id="@+id/help"
+        android:title="도움말"
+        android:icon="@android:drawable/ic_menu_edit"
+        app:showAsAction="always|withText"/>
+
+</menu>

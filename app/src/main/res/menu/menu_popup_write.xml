@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/append_write"
+        android:title="이어쓰기"
+        app:showAsAction="always|withText"/>
+
+    <item
+        android:id="@+id/new_wirte"
+        android:title="새 글"
+        app:showAsAction="always|withText"/>
+
+</menu>

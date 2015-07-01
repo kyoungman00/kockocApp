@@ -1,0 +1,179 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        >
+        <!-- Top Menu Button / story, interest, recommendation, path, magazine, myTreval -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:visibility="visible"
+                android:id="@+id/main_layout_up"
+                android:layout_width="fill_parent"
+                android:layout_height="92px"
+                android:orientation="horizontal"
+                android:weightSum="6"
+                android:background="@color/subBgColor"
+                >
+                <Button
+                    android:id="@+id/btn_stroy"
+                    android:layout_height="fill_parent"
+                    android:layout_width="fill_parent"
+                    android:layout_weight="1"
+                    android:text="소식"
+                    android:background="@color/transparency"
+                    />
+                <Button
+                    android:id="@+id/btn_interest"
+                    android:layout_height="fill_parent"
+                    android:layout_width="fill_parent"
+                    android:layout_weight="1"
+                    android:text="관심"
+                    android:background="@color/transparency"
+                    />
+                <Button
+                    android:id="@+id/btn_recommendation"
+                    android:layout_height="fill_parent"
+                    android:layout_width="fill_parent"
+                    android:layout_weight="1"
+                    android:text="추천"
+                    android:background="@color/transparency"
+                    />
+                <Button
+                    android:id="@+id/btn_trevalpath"
+                    android:layout_height="fill_parent"
+                    android:layout_width="fill_parent"
+                    android:layout_weight="1"
+                    android:text="코스"
+                    android:background="@color/transparency"
+                    />
+                <Button
+                    android:id="@+id/btn_magazine"
+                    android:layout_height="fill_parent"
+                    android:layout_width="fill_parent"
+                    android:layout_weight="1"
+                    android:text="메거진"
+                    android:background="@color/transparency"
+                    />
+                <Button
+                    android:id="@+id/btn_my_treval"
+                    android:layout_height="fill_parent"
+                    android:layout_width="fill_parent"
+                    android:layout_weight="1"
+                    android:text="내여행"
+                    android:background="@color/transparency"
+                    />
+
+            </LinearLayout>
+            <!-- Search Layout -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/layout_search_list"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+
+            <!-- VIew Pager -->
+            <android.support.v4.view.ViewPager
+                android:layout_weight="1"
+                android:id="@+id/viewPager"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <!-- Bottom Menu Button -->
+            <LinearLayout
+                android:id="@+id/main_layout_bottom"
+                android:layout_width="fill_parent"
+                android:layout_height="130px"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom"
+                >
+                <ImageButton
+                    android:id="@+id/btn_setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:src="@drawable/d_memu_01"
+                    android:background="@color/subBgColor2"
+                    />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/mainBgColor"
+                    android:weightSum="2"
+                    android:orientation="horizontal"
+                    >
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent">
+
+                        <Button
+                            android:id="@+id/btn_pathWrite"
+                            android:drawableLeft="@drawable/d_memu_02"
+                            android:textColor="@color/white"
+                            android:text="코스짜기"
+                            android:gravity="center"
+                            android:background="@color/transparency"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent" />
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="4px"
+                        android:layout_height="wrap_content"
+                        android:background="@color/subBgColor2"
+
+                        />
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent">
+
+                        <Button
+                            android:id="@+id/btn_basicWrite"
+                            android:drawableLeft="@drawable/d_memu_03"
+                            android:textColor="@color/white"
+                            android:text="글쓰기"
+                            android:gravity="center"
+                            android:background="@color/transparency"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--
+            <Button
+                android:layout_above="@id/main_layout_bottom"
+                android:layout_below="@id/main_layout_up"
+                android:layout_gravity="bottom|right"
+                android:text ="이어쓰기"
+                android:background="@color/mainBgColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        -->
+
+        </FrameLayout>
+
+
+
+</FrameLayout>

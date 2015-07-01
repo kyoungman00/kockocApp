@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ScrollView
+        android:scrollbars="none"
+        android:background="@color/subBgColor3"
+        android:fillViewport="true"
+        android:id="@+id/scroView_my_treval"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:paddingLeft="30px"
+                android:paddingRight="15px"
+                android:orientation="vertical"
+                android:id="@+id/ll_my_treval_left"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"></LinearLayout>
+
+            <LinearLayout
+                android:paddingRight="30px"
+                android:paddingLeft="15px"
+                android:orientation="vertical"
+                android:id="@+id/ll_my_treval_right"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"></LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

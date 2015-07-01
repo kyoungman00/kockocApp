@@ -1,0 +1,21 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="actionBarStyle">@style/MyActionBar</item>
+    </style>
+
+    <style name="MyActionBar" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">#f66c5b</item>
+        <item name="background">@color/mainBgColor</item>
+
+        <item name="android:logo">@drawable/logo</item>
+        <item name="logo">@drawable/logo</item>
+
+        <item name="android:displayOptions">useLogo|showHome</item>
+        <item name="displayOptions">useLogo|showHome</item>
+    </style>
+
+</resources>
