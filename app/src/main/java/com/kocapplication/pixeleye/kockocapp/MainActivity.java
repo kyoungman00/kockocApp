@@ -37,6 +37,8 @@ public class MainActivity extends ActionBarActivity {
 
         this.context = this;
         this.mDisplay = this.getWindowManager().getDefaultDisplay();
+        DisplayInfo displayInfo = new DisplayInfo();
+        displayInfo.setDisplay(this.getWindowManager().getDefaultDisplay());
 
         setContentView(R.layout.activity_main);
 
@@ -80,7 +82,8 @@ public class MainActivity extends ActionBarActivity {
                             break;
                         case R.id.new_wirte :
                             Intent intent = new Intent(getApplicationContext(),NewWrite.class);
-
+                            intent.putExtra("displayWidth",mDisplay.getWidth());
+                            intent.putExtra("displayHeight",mDisplay.getHeight());
                             startActivity(intent);
                             break;
                     }

@@ -35,8 +35,7 @@ public class Board_List{
     private TextView tv_Comment;
     private Context context;
     private AQuery aq;
-    private Display mDisplay;
-    private int dp_width, dp_height;
+    private DisplayInfo displayInfo;
 
     public Board_List(Context context, Display display){
         this.context = context;
@@ -55,7 +54,10 @@ public class Board_List{
         this.tv_Scrap = new TextView(context);
         this.tv_Comment = new TextView(context);
 
-        this.mDisplay = display;
+        this.displayInfo = new DisplayInfo();
+        displayInfo.setDisplay(display);
+
+
         //
 
         //init control
@@ -66,13 +68,8 @@ public class Board_List{
         initLinearLayout(ll_Board_List);
         initBoardDate(tv_Board_Date);
         init_ll_BottomList(ll_Bottom_List);
-        initDisplaySize(mDisplay);
     }
 
-    public void initDisplaySize(Display display) {
-        this.dp_width = display.getWidth();
-        this.dp_height = display.getHeight();
-    }
 
     public void initPathImg(ImageView img) {
         img.setImageResource(R.drawable.main_i_01);
@@ -80,7 +77,7 @@ public class Board_List{
     }
 
     public void initMainImg(ImageView img){
-        img.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        img.setLayoutParams(new ViewGroup.LayoutParams((displayInfo.getDisplayWidth()-90)/2, resize_Height(300,248,(displayInfo.getDisplayWidth()-90)/2)));
     }
     public void iniText(TextView tv){
         tv.setTextColor(context.getResources().getColor(R.color.innerTextColor));
@@ -139,25 +136,29 @@ public class Board_List{
 
     public void setLayout(String img_url, String innerText, String innerTag, boolean path, String date, String goodCount, String scrapCount, String commentCount, int id){
 
-        img_url = "http://192.168.0.18:8080/2.jpg";
+        img_url = "http://192.168.0.18:8080/so5.jpg";
         Log.v("Tag","Log : "+img_url);
 
 
         //Img_Main에 직접 넣기
-        //img_Main.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        //aq.id(img_Main).image(img_url,true,true, 500,0);
+        //img_Main.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+         aq.id(img_Main).image(img_url,true,true, 500,0);
         //img_Main.setScaleType(ImageView.ScaleType.FIT_XY);
 
 
 
-        int resize_width = (dp_width-90)/2;
+        int resize_width = (displayInfo.getDisplayWidth()-90)/2;
 
         Bitmap bm = aq.getCachedImage(img_url);
         if(bm != null){
-            bm = Bitmap.createScaledBitmap(bm,resize_width,resize_Height(bm.getWidth(),bm.getHeight(),resize_width),false);
-            img_Main.setImageBitmap(bm);
+
             Log.v("Tag","Log : width : "+bm.getWidth()+", height : "+bm.getHeight());
+            bm = Bitmap.createScaledBitmap(bm,resize_width,resize_Height(bm.getWidth(),bm.getHeight(),resize_width),true);
+          //  img_Main.setLayoutParams(new ActionBar.LayoutParams(bm.getWidth(),resize_Height(bm.getWidth(),bm.getHeight(),resize_width)));
+
+           img_Main.setImageBitmap(bm);
             Log.v("Tag","Log Change : width : "+bm.getWidth()+", height : "+bm.getHeight());
+
         }
 
       //  img_Main.setAdjustViewBounds(false);

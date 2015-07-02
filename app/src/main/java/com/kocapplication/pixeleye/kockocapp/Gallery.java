@@ -2,6 +2,7 @@ package com.kocapplication.pixeleye.kockocapp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.media.Image;
@@ -26,13 +27,17 @@ public class Gallery extends Activity{
     private Cursor imageCursor;
     private String[] columns;
     private String orderBy;
-    private Display mDisplay;
+    private int displayWidth, displayHeight;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_gallery);
+        Intent intent = getIntent();
+        this.displayWidth = intent.getIntExtra("displayWidth",0);
+        this.displayHeight = intent.getIntExtra("displayHeight",0);
 
         columns = new String[]{MediaStore.Images.Media.DATA, MediaStore.Images.Media._ID};
         orderBy = MediaStore.Images.Media._ID;
@@ -86,7 +91,7 @@ public class Gallery extends Activity{
                 holder = (ViewHolder)convertView.getTag();
             }
             holder.getImgView().setId(position);
-            bmGalleryItem[position] = Bitmap.createScaledBitmap(bmGalleryItem[position],320,240,true);
+            bmGalleryItem[position] = Bitmap.createScaledBitmap(bmGalleryItem[position],displayWidth,240,true);
 
             holder.getImgView().setImageBitmap(bmGalleryItem[position]);
             holder.setId(position);

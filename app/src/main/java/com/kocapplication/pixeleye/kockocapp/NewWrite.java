@@ -14,12 +14,15 @@ import android.widget.Toast;
 public class NewWrite extends Activity {
 
     private Button btn_back, btn_gallery;
-    private Display mDisplay;
+    private int displayWidth,displayHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_new_write);
+        Intent intent = getIntent();
+        this.displayWidth = intent.getIntExtra("displayWidth",0);
+        this.displayHeight = intent.getIntExtra("displayHeight",0);
 
         View.OnClickListener btn_Click_Listener = new View.OnClickListener() {
             @Override
@@ -31,6 +34,8 @@ public class NewWrite extends Activity {
                         break;
                     case R.id.btn_gallery :
                         Intent intent = new Intent(getApplicationContext(),Gallery.class);
+                        intent.putExtra("displayWidth",displayWidth);
+                        intent.putExtra("displayHeight",displayHeight);
                         startActivity(intent);
                 }
             }
