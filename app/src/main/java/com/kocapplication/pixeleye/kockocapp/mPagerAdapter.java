@@ -119,7 +119,7 @@ public class mPagerAdapter extends PagerAdapter {
 
         for(int i=0; i<20; i++){
             Board_List bl= new Board_List(v.getContext());
-            bl.setLayout(null, "예제Text"+i, "예제Tag"+i, true, "2015-06-26", "3", "4", "5",i);
+            bl.setLayout("http://192.168.0.18:8080/testDir/testimage.jpg", "예제Text"+i, "예제Tag"+i, true, "2015-06-26", "3", "4", "5",i);
             LinearLayout ll = bl.getLinerLayout();
             if(i%2 == 0) {
                 ll_left.addView(ll);

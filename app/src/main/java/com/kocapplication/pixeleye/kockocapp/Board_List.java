@@ -2,6 +2,7 @@ package com.kocapplication.pixeleye.kockocapp;
 
 import android.app.ActionBar;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -126,10 +127,23 @@ public class Board_List{
 
     public void setLayout(String img_url, String innerText, String innerTag, boolean path, String date, String goodCount, String scrapCount, String commentCount, int id){
 
-        img_url = "http://192.168.0.18:8080/testimage.jpg";
-        aq.id(img_Main).image(img_url,true,true,400,0);
+        img_url = "http://192.168.0.18:8080/thumbnail1.jpg";
+        Log.v("Tag","Log : "+img_url);
 
-        img_Main.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+        //img_Main.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        //aq.id(img_Main).image(img_url,true,true, 500,0);
+        img_Main.setScaleType(ImageView.ScaleType.FIT_XY);
+
+        Bitmap bm = aq.getCachedImage(img_url);
+        if(bm == null){
+
+        }
+        bm = Bitmap.createScaledBitmap(bm,495,410,false);
+        img_Main.setImageBitmap(bm);
+       // img_Main.setAdjustViewBounds(false);
+
+        img_Main.setBackgroundColor(context.getResources().getColor(R.color.black));
 
         tv_InnerText.setText(innerText);
         tv_InnerTag.setText(innerTag);
