@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,10 +26,12 @@ public class mPagerAdapter extends PagerAdapter {
     private LayoutInflater mInflater;
     private LinearLayout ll_left;
     private LinearLayout ll_right;
+    private Display mDisplay;
 
-    public mPagerAdapter(Context context){
+    public mPagerAdapter(Context context, Display display){
         super();
-        mInflater = LayoutInflater.from(context);
+        this.mInflater = LayoutInflater.from(context);
+        this.mDisplay = display;
     }
 
     public Object instantiateItem(View pager, int position) {
@@ -118,7 +121,7 @@ public class mPagerAdapter extends PagerAdapter {
         }
 
         for(int i=0; i<20; i++){
-            Board_List bl= new Board_List(v.getContext());
+            Board_List bl= new Board_List(v.getContext(),mDisplay);
             bl.setLayout("http://192.168.0.18:8080/testDir/testimage.jpg", "예제Text"+i, "예제Tag"+i, true, "2015-06-26", "3", "4", "5",i);
             LinearLayout ll = bl.getLinerLayout();
             if(i%2 == 0) {

@@ -3,9 +3,12 @@ package com.kocapplication.pixeleye.kockocapp;
 import android.app.ActionBar;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.text.Layout;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -32,8 +35,10 @@ public class Board_List{
     private TextView tv_Comment;
     private Context context;
     private AQuery aq;
+    private Display mDisplay;
+    private int dp_width, dp_height;
 
-    public Board_List(Context context){
+    public Board_List(Context context, Display display){
         this.context = context;
         this.aq = new AQuery(context);
         this.ll_Board_List = new LinearLayout(context);
@@ -42,8 +47,6 @@ public class Board_List{
         this.tv_InnerTag = new TextView(context);
         this.img_Path = new ImageView(context);
 
-
-
         this.ll_Bottom_List = new LinearLayout(context);
         this.tv_Board_Date = new TextView(context);
         //
@@ -51,6 +54,8 @@ public class Board_List{
         this.tv_Good = new TextView(context);
         this.tv_Scrap = new TextView(context);
         this.tv_Comment = new TextView(context);
+
+        this.mDisplay = display;
         //
 
         //init control
@@ -61,7 +66,14 @@ public class Board_List{
         initLinearLayout(ll_Board_List);
         initBoardDate(tv_Board_Date);
         init_ll_BottomList(ll_Bottom_List);
+        initDisplaySize(mDisplay);
     }
+
+    public void initDisplaySize(Display display) {
+        this.dp_width = display.getWidth();
+        this.dp_height = display.getHeight();
+    }
+
     public void initPathImg(ImageView img) {
         img.setImageResource(R.drawable.main_i_01);
         img.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -127,21 +139,28 @@ public class Board_List{
 
     public void setLayout(String img_url, String innerText, String innerTag, boolean path, String date, String goodCount, String scrapCount, String commentCount, int id){
 
-        img_url = "http://192.168.0.18:8080/thumbnail1.jpg";
+        img_url = "http://192.168.0.18:8080/2.jpg";
         Log.v("Tag","Log : "+img_url);
 
 
+        //Img_Main에 직접 넣기
         //img_Main.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         //aq.id(img_Main).image(img_url,true,true, 500,0);
-        img_Main.setScaleType(ImageView.ScaleType.FIT_XY);
+        //img_Main.setScaleType(ImageView.ScaleType.FIT_XY);
+
+
+
+        int resize_width = (dp_width-90)/2;
 
         Bitmap bm = aq.getCachedImage(img_url);
-        if(bm == null){
-
+        if(bm != null){
+            bm = Bitmap.createScaledBitmap(bm,resize_width,resize_Height(bm.getWidth(),bm.getHeight(),resize_width),false);
+            img_Main.setImageBitmap(bm);
+            Log.v("Tag","Log : width : "+bm.getWidth()+", height : "+bm.getHeight());
+            Log.v("Tag","Log Change : width : "+bm.getWidth()+", height : "+bm.getHeight());
         }
-        bm = Bitmap.createScaledBitmap(bm,495,410,false);
-        img_Main.setImageBitmap(bm);
-       // img_Main.setAdjustViewBounds(false);
+
+      //  img_Main.setAdjustViewBounds(false);
 
         img_Main.setBackgroundColor(context.getResources().getColor(R.color.black));
 
@@ -157,11 +176,14 @@ public class Board_List{
         ll_Board_List.addView(tv_InnerText);
         ll_Board_List.addView(tv_InnerTag);
         if(path) {
-
             ll_Board_List.addView(img_Path);
         }
         ll_Board_List.addView(ll_Bottom_List);
         ll_Board_List.setTag(id);
+    }
+
+    public int resize_Height(int width, int height, int resize_width){
+        return (height*resize_width)/width;
     }
 
     public LinearLayout getLinerLayout() {

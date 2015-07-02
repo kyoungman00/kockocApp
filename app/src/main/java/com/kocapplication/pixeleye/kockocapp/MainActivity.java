@@ -6,9 +6,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -26,6 +28,7 @@ public class MainActivity extends ActionBarActivity {
     private ImageButton btn_setting;
     private boolean Menu_Check[] =  new boolean[5];
     private Context context;
+    private Display mDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         this.context = this;
+        this.mDisplay = this.getWindowManager().getDefaultDisplay();
 
         setContentView(R.layout.activity_main);
 
@@ -76,6 +80,7 @@ public class MainActivity extends ActionBarActivity {
                             break;
                         case R.id.new_wirte :
                             Intent intent = new Intent(getApplicationContext(),NewWrite.class);
+
                             startActivity(intent);
                             break;
                     }
@@ -121,7 +126,7 @@ public class MainActivity extends ActionBarActivity {
 
         // ViewPager pagerAdapter connect
         pager = (ViewPager)findViewById(R.id.viewPager);
-        pager.setAdapter(new mPagerAdapter(this));
+        pager.setAdapter(new mPagerAdapter(this,mDisplay));
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i2) {

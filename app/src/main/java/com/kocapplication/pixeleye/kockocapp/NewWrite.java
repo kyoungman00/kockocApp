@@ -1,7 +1,9 @@
 package com.kocapplication.pixeleye.kockocapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -11,7 +13,8 @@ import android.widget.Toast;
  */
 public class NewWrite extends Activity {
 
-    private Button btn_back;
+    private Button btn_back, btn_gallery;
+    private Display mDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -25,12 +28,19 @@ public class NewWrite extends Activity {
                     case R.id.btn_back :
                         Toast.makeText(getApplicationContext(),"Back Button is Clicked",Toast.LENGTH_LONG).show();
                         finish();
+                        break;
+                    case R.id.btn_gallery :
+                        Intent intent = new Intent(getApplicationContext(),Gallery.class);
+                        startActivity(intent);
                 }
             }
         };
 
         btn_back = (Button)findViewById(R.id.btn_back);
         btn_back.setOnClickListener(btn_Click_Listener);
+
+        btn_gallery = (Button)findViewById(R.id.btn_gallery);
+        btn_gallery.setOnClickListener(btn_Click_Listener);
 
 
     }

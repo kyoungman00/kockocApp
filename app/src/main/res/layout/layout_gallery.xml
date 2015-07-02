@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- top Menu -->
+        <LinearLayout
+            android:background="@color/mainBgColor"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="35dp">
+
+            <Button
+                android:layout_gravity="center"
+                android:layout_margin="6dp"
+                android:id="@+id/btn_back"
+                android:background="@drawable/sub_01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:layout_margin="3dp"
+                android:textSize="23dp"
+                android:text="갤러리"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_weight="0.1"
+                android:layout_gravity="bottom"
+                android:gravity="right"
+                android:layout_margin="3dp"
+                android:textSize="17dp"
+                android:text="0개체 선택 됨"
+                android:textColor="@color/subTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <GridView
+            android:layout_weight="0.1"
+            android:id="@+id/gv_gallery"
+            android:numColumns="3"
+            android:verticalSpacing="1dp"
+            android:horizontalSpacing="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            </GridView>
+    </LinearLayout>
+
+</LinearLayout>
