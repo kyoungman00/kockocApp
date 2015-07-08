@@ -35,6 +35,8 @@ public class Board_List{
     private TextView tv_Comment;
     private Context context;
     private AQuery aq;
+   // private DisplayInfo displayInfo;
+
     private DisplayInfo displayInfo;
 
     public Board_List(Context context, Display display){
@@ -55,10 +57,38 @@ public class Board_List{
         this.tv_Comment = new TextView(context);
 
         this.displayInfo = new DisplayInfo();
-        displayInfo.setDisplay(display);
+    //    displayInfo.setDisplay(display);
 
 
+        //init control
+        initMainImg(this.img_Main);
+        iniText(this.tv_InnerText);
+        iniTag(this.tv_InnerTag);
+        initPathImg(this.img_Path);
+        initLinearLayout(ll_Board_List);
+        initBoardDate(tv_Board_Date);
+        init_ll_BottomList(ll_Bottom_List);
+    }
+
+    public Board_List(Context context){
+        this.context = context;
+        this.aq = new AQuery(context);
+        this.ll_Board_List = new LinearLayout(context);
+        this.img_Main = new ImageView(context);
+        this.tv_InnerText = new TextView(context);
+        this.tv_InnerTag = new TextView(context);
+        this.img_Path = new ImageView(context);
+
+        this.ll_Bottom_List = new LinearLayout(context);
+        this.tv_Board_Date = new TextView(context);
         //
+        this.ll_GoodCount = new LinearLayout(context);
+        this.tv_Good = new TextView(context);
+        this.tv_Scrap = new TextView(context);
+        this.tv_Comment = new TextView(context);
+
+        this.displayInfo = (DisplayInfo)context.getApplicationContext();
+
 
         //init control
         initMainImg(this.img_Main);
@@ -136,17 +166,19 @@ public class Board_List{
 
     public void setLayout(String img_url, String innerText, String innerTag, boolean path, String date, String goodCount, String scrapCount, String commentCount, int id){
 
-        img_url = "http://192.168.0.18:8080/so5.jpg";
+      //  img_url = "http://192.168.0.18:8080/board_image/2.jpg";
+      // img_url = "/mnt/sdcard/DCIM/Camera/20150701_151135.jpg";
         Log.v("Tag","Log : "+img_url);
 
 
         //Img_Main에 직접 넣기
         //img_Main.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-         aq.id(img_Main).image(img_url,true,true, 500,0);
+         aq.id(img_Main).image(img_url,true,true, 200,0);
         //img_Main.setScaleType(ImageView.ScaleType.FIT_XY);
 
 
 
+        //int resize_width = (displayInfo.getDisplayWidth()-90)/2;
         int resize_width = (displayInfo.getDisplayWidth()-90)/2;
 
         Bitmap bm = aq.getCachedImage(img_url);

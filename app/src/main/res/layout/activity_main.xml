@@ -19,7 +19,7 @@
                 android:visibility="visible"
                 android:id="@+id/main_layout_up"
                 android:layout_width="fill_parent"
-                android:layout_height="92px"
+                android:layout_height="46dp"
                 android:orientation="horizontal"
                 android:weightSum="6"
                 android:background="@color/subBgColor"
@@ -95,7 +95,7 @@
             <LinearLayout
                 android:id="@+id/main_layout_bottom"
                 android:layout_width="fill_parent"
-                android:layout_height="130px"
+                android:layout_height="65dp"
                 android:orientation="horizontal"
                 android:layout_gravity="bottom"
                 >
@@ -132,7 +132,7 @@
 
                     </LinearLayout>
                     <View
-                        android:layout_width="4px"
+                        android:layout_width="2dp"
                         android:layout_height="wrap_content"
                         android:background="@color/subBgColor2"
 

@@ -34,8 +34,9 @@ public class NewWrite extends Activity {
                         break;
                     case R.id.btn_gallery :
                         Intent intent = new Intent(getApplicationContext(),Gallery.class);
-                        intent.putExtra("displayWidth",displayWidth);
-                        intent.putExtra("displayHeight",displayHeight);
+                    //    intent.putExtra("displayWidth",displayWidth);
+                    //    intent.putExtra("displayHeight",displayHeight);
+
                         startActivity(intent);
                 }
             }

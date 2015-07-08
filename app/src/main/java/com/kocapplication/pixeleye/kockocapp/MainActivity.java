@@ -28,7 +28,7 @@ public class MainActivity extends ActionBarActivity {
     private ImageButton btn_setting;
     private boolean Menu_Check[] =  new boolean[5];
     private Context context;
-    private Display mDisplay;
+ //   private Display mDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +36,11 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         this.context = this;
-        this.mDisplay = this.getWindowManager().getDefaultDisplay();
-        DisplayInfo displayInfo = new DisplayInfo();
+       // this.mDisplay = this.getWindowManager().getDefaultDisplay();
+      //  DisplayInfo displayInfo = new DisplayInfo();
+      //  displayInfo.setDisplay(this.getWindowManager().getDefaultDisplay());
+
+        DisplayInfo displayInfo = (DisplayInfo)getApplicationContext();
         displayInfo.setDisplay(this.getWindowManager().getDefaultDisplay());
 
         setContentView(R.layout.activity_main);
@@ -82,8 +85,8 @@ public class MainActivity extends ActionBarActivity {
                             break;
                         case R.id.new_wirte :
                             Intent intent = new Intent(getApplicationContext(),NewWrite.class);
-                            intent.putExtra("displayWidth",mDisplay.getWidth());
-                            intent.putExtra("displayHeight",mDisplay.getHeight());
+                        //    intent.putExtra("displayWidth",mDisplay.getWidth());
+                        //    intent.putExtra("displayHeight",mDisplay.getHeight());
                             startActivity(intent);
                             break;
                     }
@@ -129,7 +132,8 @@ public class MainActivity extends ActionBarActivity {
 
         // ViewPager pagerAdapter connect
         pager = (ViewPager)findViewById(R.id.viewPager);
-        pager.setAdapter(new mPagerAdapter(this,mDisplay));
+        //pager.setAdapter(new mPagerAdapter(this,mDisplay));
+        pager.setAdapter(new mPagerAdapter(this));
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i2) {

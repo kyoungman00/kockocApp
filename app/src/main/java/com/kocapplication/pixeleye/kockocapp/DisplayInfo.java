@@ -12,13 +12,16 @@ import android.view.Display;
     public void setDisplay(Display display) {
         this.mDisplay = display;
     }
+
     public int getDisplayWidth(){
         return this.mDisplay.getWidth();
     }
+
     public int getDisplayHeight(){
         return this.mDisplay.getHeight();
     }
-    public int resize_Height(int resize_width){
+
+    public int resize_Height(int width, int height, int resize_width){
         return (this.getDisplayHeight()*resize_width)/getDisplayWidth();
     }
 

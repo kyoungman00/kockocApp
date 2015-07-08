@@ -34,6 +34,11 @@ public class mPagerAdapter extends PagerAdapter {
         this.mDisplay = display;
     }
 
+    public mPagerAdapter(Context context){
+        super();
+        this.mInflater = LayoutInflater.from(context);
+    }
+
     public Object instantiateItem(View pager, int position) {
         View v = null;
 
@@ -121,13 +126,16 @@ public class mPagerAdapter extends PagerAdapter {
         }
 
         for(int i=0; i<20; i++){
-            Board_List bl= new Board_List(v.getContext(),mDisplay);
-            bl.setLayout("http://192.168.0.18:8080/testDir/testimage.jpg", "예제Text"+i, "예제Tag"+i, true, "2015-06-26", "3", "4", "5",i);
-            LinearLayout ll = bl.getLinerLayout();
+           // Board_List bl= new Board_List(v.getContext(),mDisplay);
+            Board_List bl= new Board_List(v.getContext());
             if(i%2 == 0) {
+                bl.setLayout("http://192.168.0.18:8080/imgDir/t1.jpg", "예제Text"+i, "예제Tag"+i, true, "2015-06-26", "3", "4", "5",i);
+                LinearLayout ll = bl.getLinerLayout();
                 ll_left.addView(ll);
             }
             else {
+                bl.setLayout("http://192.168.0.18:8080/imgDir/t2.jpg", "예제Text"+i, "예제Tag"+i+"hbaoianoiabioaboibaibooiabnoiadnoiearm;dfhpiasnio;adoipadgsnoi", true, "2015-06-26", "3", "4", "5",i);
+                LinearLayout ll = bl.getLinerLayout();
                 ll_right.addView(ll);
             }
         }
