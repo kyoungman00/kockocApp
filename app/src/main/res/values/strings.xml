@@ -4,5 +4,7 @@
     <string name="app_name">콕콕</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="open_drawer">open</string>
+    <string name="closed_drawer">close</string>
 
 </resources>

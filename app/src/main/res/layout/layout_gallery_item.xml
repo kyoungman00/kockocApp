@@ -9,12 +9,14 @@
         android:layout_marginRight="2dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
             android:layout_gravity="center"
             android:id="@+id/iv_item"
             android:background="@drawable/bg_rectangle_shape_silver"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
         <View
             android:background="@drawable/p_01"
             android:layout_marginLeft="3dp"
@@ -22,6 +24,7 @@
             android:layout_width="23dp"
             android:layout_height="23dp"
             android:layout_gravity="bottom|left"/>
+
         <TextView
             android:gravity="center"
             android:layout_gravity="bottom|right"
@@ -31,6 +34,7 @@
             android:id="@+id/tv_item"
             android:layout_width="20dp"
             android:layout_height="20dp" />
+
     </FrameLayout>
 
 </RelativeLayout>

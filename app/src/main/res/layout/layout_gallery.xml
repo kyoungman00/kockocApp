@@ -11,7 +11,7 @@
         <LinearLayout
             android:background="@color/mainBgColor"
             android:orientation="horizontal"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="35dp">
 
             <Button
@@ -28,6 +28,22 @@
                 android:textSize="23dp"
                 android:text="갤러리"
                 android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <View
+                android:background="@color/transparency"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"/>
+
+            <Button
+                android:id="@+id/btn_galleryNext"
+                android:visibility="invisible"
+                android:background="@color/transparency"
+                android:layout_gravity="right|center"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:text="선택"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

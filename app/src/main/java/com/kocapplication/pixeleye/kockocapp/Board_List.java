@@ -1,8 +1,10 @@
 package com.kocapplication.pixeleye.kockocapp;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.text.Layout;
 import android.util.Log;
 import android.view.Display;
@@ -21,7 +23,7 @@ import com.androidquery.AQuery;
 /**
  * Created by Administrator on 2015-06-26.
  */
-public class Board_List{
+public class Board_List extends Thread{
     private LinearLayout ll_Board_List;
     private ImageView img_Main;
     private TextView tv_InnerText;
@@ -103,11 +105,12 @@ public class Board_List{
 
     public void initPathImg(ImageView img) {
         img.setImageResource(R.drawable.main_i_01);
-        img.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        img.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
     }
 
     public void initMainImg(ImageView img){
-        img.setLayoutParams(new ViewGroup.LayoutParams((displayInfo.getDisplayWidth()-90)/2, resize_Height(300,248,(displayInfo.getDisplayWidth()-90)/2)));
+        img.setLayoutParams(new ViewGroup.LayoutParams((displayInfo.getDisplayWidth()-3)/2, resize_Height(300,248,(displayInfo.getDisplayWidth()-3)/2)));
+        //img.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
     }
     public void iniText(TextView tv){
         tv.setTextColor(context.getResources().getColor(R.color.innerTextColor));
@@ -166,34 +169,22 @@ public class Board_List{
 
     public void setLayout(String img_url, String innerText, String innerTag, boolean path, String date, String goodCount, String scrapCount, String commentCount, int id){
 
-      //  img_url = "http://192.168.0.18:8080/board_image/2.jpg";
-      // img_url = "/mnt/sdcard/DCIM/Camera/20150701_151135.jpg";
         Log.v("Tag","Log : "+img_url);
-
-
-        //Img_Main에 직접 넣기
-        //img_Main.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-         aq.id(img_Main).image(img_url,true,true, 200,0);
-        //img_Main.setScaleType(ImageView.ScaleType.FIT_XY);
-
-
-
-        //int resize_width = (displayInfo.getDisplayWidth()-90)/2;
-        int resize_width = (displayInfo.getDisplayWidth()-90)/2;
 
         Bitmap bm = aq.getCachedImage(img_url);
         if(bm != null){
 
             Log.v("Tag","Log : width : "+bm.getWidth()+", height : "+bm.getHeight());
-            bm = Bitmap.createScaledBitmap(bm,resize_width,resize_Height(bm.getWidth(),bm.getHeight(),resize_width),true);
-          //  img_Main.setLayoutParams(new ActionBar.LayoutParams(bm.getWidth(),resize_Height(bm.getWidth(),bm.getHeight(),resize_width)));
 
-           img_Main.setImageBitmap(bm);
+            BitmapDrawable ob = new BitmapDrawable(context.getResources(), bm);
+            img_Main.setImageDrawable(ob);
             Log.v("Tag","Log Change : width : "+bm.getWidth()+", height : "+bm.getHeight());
 
         }
-
-      //  img_Main.setAdjustViewBounds(false);
+        else {
+            Log.e("Tag","AQuery aq.getCachedImage is null");
+            aq.id(img_Main).image(img_url,true,true,200,0);
+        }
 
         img_Main.setBackgroundColor(context.getResources().getColor(R.color.black));
 
